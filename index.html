@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday with Diwali Blast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:   #000033 ;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .title {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .letter {
+            font-size: 4rem;
+            font-weight: bold;
+            animation: rainbow 3s infinite linear;
+        }
+
+        /* Fireworks with Images - Colorful */
+        .firework {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, transparent, rgba(255, 255, 255, 0.8), transparent),
+                url('WhatsApp Image 2025-01-19 at 07.42.44_d5d3de2b.jpg') center/cover no-repeat;
+            border-radius: 50%;
+            animation: firework-explode 1.5s ease-in-out infinite, firework-color 3s linear infinite;
+            mix-blend-mode: screen;
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.7), 0 0 40px rgba(255, 155, 0, 0.6), 0 0 50px rgba(255, 236, 0, 0.5), 
+                        0 0 60px rgba(0, 255, 0, 0.4), 0 0 70px rgba(0, 230, 255, 0.3), 0 0 80px rgba(128, 0, 255, 0.2);
+        }
+
+        .firework1 { top: 15%; left: 25%; animation-delay: 0s; }
+        .firework2 { top: 10%; right: 20%; animation-delay: 0.5s; }
+        .firework3 { bottom: 20%; left: 30%; animation-delay: 1s; }
+        .firework4 { bottom: 15%; right: 25%; animation-delay: 1.5s; }
+
+        @keyframes firework-explode {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(3);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes firework-color {
+            0% { box-shadow: 0 0 30px #FF007F; }
+            25% { box-shadow: 0 0 30px #FF9B00; }
+            50% { box-shadow: 0 0 30px #FFEC00; }
+            75% { box-shadow: 0 0 30px #00FF00; }
+            100% { box-shadow: 0 0 30px #00E6FF; }
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            width: 150px;
+            height: 200px;
+            background: radial-gradient(circle, white, #FF007F);
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: float 5s infinite ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .balloon-left { left: 5%; bottom: 0; }
+        .balloon-right { right: 5%; bottom: 0; }
+        .balloon-middle { left: 45%; bottom: 0; animation: float-to-center 5s infinite ease-in-out; }
+
+        .balloon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Kites */
+        .kite {
+            position: absolute;
+            width: 100px;
+            height: 150px;
+            background-color: #00E6FF;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: float 5s infinite ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .kite-left { left: 5%; bottom: 0; }
+        .kite-right { right: 5%; bottom: 0; }
+        .kite-middle { left: 45%; bottom: 0; animation: float-to-center 5s infinite ease-in-out; }
+
+        .kite img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .kite:before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 300px;
+            background: white;
+            left: 50%;
+            bottom: -300px;
+        }
+
+        /* Float Animation */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-200px); }
+            100% { transform: translateY(-600px); }
+        }
+
+        @keyframes float-to-center {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100px); }
+            100% { transform: translateY(-300px); }
+        }
+
+        /* Rainbow Animation for Letters */
+        @keyframes rainbow {
+            0% { color: #FF007F; }
+            14% { color: #FF9B00; }
+            28% { color: #FFEC00; }
+            42% { color: #00FF00; }
+            57% { color: #00E6FF; }
+            71% { color: #8000FF; }
+            85% { color: #FF007F; }
+            100% { color: #FF007F; }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <span class="letter" style="color: #FF007F;">H</span>
+        <span class="letter" style="color: #FF9B00;">a</span>
+        <span class="letter" style="color: #FFEC00;">p</span>
+        <span class="letter" style="color: #00FF00;">p</span>
+        <span class="letter" style="color: #00E6FF;">y</span>
+        <span class="letter" style="color: #8000FF;"> </span>
+        <span class="letter" style="color: #FF007F;">B</span>
+        <span class="letter" style="color: #FF9B00;">i</span>
+        <span class="letter" style="color: #FFEC00;">r</span>
+        <span class="letter" style="color: #00FF00;">t</span>
+        <span class="letter" style="color: #00E6FF;">h</span>
+        <span class="letter" style="color: #8000FF;">d</span>
+        <span class="letter" style="color: #FF007F;">a</span>
+        <span class="letter" style="color: #FF9B00;">y</span>
+    </div>
+
+    <!-- Fireworks -->
+    <div class="firework firework1"></div>
+    <div class="firework firework2"></div>
+    <div class="firework firework3"></div>
+    <div class="firework firework4"></div>
+
+    <!-- Balloons -->
+    <div class="balloon balloon-left">
+        <img src="WhatsApp Image 2025-01-19 at 07.40.32_ff93ab2b.jpg" alt="Image Left Balloon">
+    </div>
+    <div class="balloon balloon-right">
+        <img src="WhatsApp Image 2025-01-19 at 07.42.44_d5d3de2b.jpg" alt="Image Right Balloon">
+    </div>
+    <div class="balloon balloon-middle">
+        <img src="WhatsApp Image 2025-01-19 at 07.40.32_ff93ab2b.jpg" alt="Image Middle Balloon">
+    </div>
+
+    <!-- Kites -->
+    <!--<div class="kite kite-left">
+        <img src="WhatsApp Image 2025-01-19 at 07.40.32_ff93ab2b.jpg" alt="Image Left Kite">
+    </div>
+    <div class="kite kite-right">
+        <img src="WhatsApp Image 2025-01-19 at 07.42.44_d5d3de2b.jpg" alt="Image Right Kite">
+    </div>
+    <div class="kite kite-middle">
+        <img src="WhatsApp Image 2025-01-19 at 07.40.32_ff93ab2b.jpg" alt="Image Middle Kite">
+    </div>-->
+</body>
+</html>
