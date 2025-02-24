@@ -45,10 +45,10 @@
 
         .firework {
             position: absolute;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, transparent, rgba(5, 5, 5, 0.20000), transparent),
-                url('remote.jpg') center/cover no-repeat;
+            width: 80px; /* Resized */
+            height: 80px; /* Resized */
+            background: radial-gradient(circle, transparent, rgba(5, 5, 5, 0.2), transparent),
+                url('remote.jpg') top/contain no-repeat; /* Fixed: Ensures full image is visible */
             border-radius: 50%;
             animation: firework-explode 1.5s ease-in-out infinite, firework-color 3s linear infinite;
             mix-blend-mode: screen;
@@ -75,11 +75,11 @@
 
         .balloon {
             position: absolute;
-            width: 100px;
-            height: 140px;
+            width: 80px; /* Resized */
+            height: 110px; /* Resized */
             background: radial-gradient(circle, white, #FF007F);
             border-radius: 50%;
-            animation: float-to-center 5s ease-in-out forwards; /* Ensures the balloon stays at its final position */
+            animation: float-to-center 5s ease-in-out forwards;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -87,14 +87,14 @@
         }
 
         .balloon img {
-            width: 100%;
-            height: 100%;
+            width: 80px; /* Resized */
+            height: 110px; /* Resized */
             object-fit: cover;
             border-radius: 50%;
         }
 
         .balloon-bottom {
-            bottom: 0; /* Starts at the bottom of the screen */
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -116,9 +116,9 @@
         }
 
         @keyframes float-to-center {
-            0% { transform: translate(-50%, 50%); opacity: 0; } /* Starts below the screen */
-            20% {transform: translate(-50%, 80%); opacity: 1; } /* Balloon fades in */
-            100% { transform: translate(-50%, -50%); opacity: 1; } /* Stops at the center */
+            0% { transform: translate(-50%, 50%); opacity: 0; }
+            20% { transform: translate(-50%, 80%); opacity: 1; }
+            100% { transform: translate(-50%, -50%); opacity: 1; }
         }
     </style>
 </head>
@@ -142,19 +142,16 @@
             <span class="letter" style="color: #FF9B00;">y</span>
         </div>
         <div class="title">
-            <span class="letter" style="color: #FF9B00;">t</span>
-            <span class="letter" style="color: #FFEC00;">h</span>
-            <span class="letter" style="color: #00FF00;">a</span>
-            <span class="letter" style="color: #00E6FF;">n</span>
-            <span class="letter" style="color: #8000FF;">u</span>
-            <span class="letter" style="color: #FF007F;"> </span>
             <span class="letter" style="color: #FF9B00;">s</span>
-            <span class="letter" style="color: #8000FF;">r</span>
-            <span class="letter" style="color: #FF9B00;">e</span>
-            <span class="letter" style="color: #FF9B00;">e</span>
-        </div>
-        </div>
+            <span class="letter" style="color: #FFEC00;">a</span>
+            <span class="letter" style="color: #00FF00;">h</span>
+            <span class="letter" style="color: #00E6FF;">i</span>
+            <span class="letter" style="color: #8000FF;">t</span>
+            <span class="letter" style="color: #FF007F;">y</span>
+            <span class="letter" style="color: #FF9B00;">a</span>
 
+        </div>
+`
         <!-- Cake Image -->
         <img class="cake-image" src="https://www.greatestbakery.in/wp-content/uploads/2023/05/Rainbow-Cake.jpg" alt="Birthday Cake">
     </div>
