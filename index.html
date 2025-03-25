@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
+    <title>Happy Birthday with Fireworks</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,48 +16,39 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-            position: relative;
-        }
-
-        .content {
-            position: relative;
-            text-align: center;
-            z-index: 10;
         }
 
         .title {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
             z-index: 10;
-            animation: fadeIn 2s ease-out;
+            position: relative;
         }
 
-        .title .letter {
+        .letter {
+            font-size: 4rem;
+            font-weight: bold;
             animation: rainbow 3s infinite linear;
         }
 
-        .cake-image {
-            width: 300px;
-            height: auto;
-            margin-top: 20px;
-        }
-
+        /* Fireworks */
         .firework {
             position: absolute;
-            width: 80px; /* Resized */
-            height: 80px; /* Resized */
-            background: radial-gradient(circle, transparent, rgba(5, 5, 5, 0.2), transparent),
-                url('remote.jpg') top/contain no-repeat; /* Fixed: Ensures full image is visible */
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, transparent, rgba(255, 255, 255, 0.8), transparent),
+                url('haswi4.jpg') center/cover no-repeat;
             border-radius: 50%;
             animation: firework-explode 1.5s ease-in-out infinite, firework-color 3s linear infinite;
             mix-blend-mode: screen;
         }
 
-        .firework1 { top: 10%; left: 25%; animation-delay: 1s; }
-        .firework2 { top: 10%; right: 20%; animation-delay: 2s; }
-        .firework3 { bottom: 20%; left: 30%; animation-delay: 3s; }
-        .firework4 { bottom: 15%; right: 25%; animation-delay: 4s; }
+        .firework1 { top: 15%; left: 25%; animation-delay: 0s; }
+        .firework2 { top: 10%; right: 20%; animation-delay: 0.5s; }
+        .firework3 { bottom: 20%; left: 30%; animation-delay: 1s; }
+        .firework4 { bottom: 15%; right: 25%; animation-delay: 1.5s; }
 
         @keyframes firework-explode {
             0% { transform: scale(0.5); opacity: 1; }
@@ -73,30 +64,37 @@
             100% { box-shadow: 0 0 30px #00E6FF; }
         }
 
+        /* Balloons */
         .balloon {
             position: absolute;
-            width: 80px; /* Resized */
-            height: 110px; /* Resized */
+            width: 100px;
+            height: 130px;
             background: radial-gradient(circle, white, #FF007F);
             border-radius: 50%;
-            animation: float-to-center 5s ease-in-out forwards;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 20;
+            animation: float 5s infinite ease-in-out;
         }
 
+        .balloon-left { left: 10%; bottom: 0; }
+        .balloon-right { right: 10%; bottom: 0; }
+        .balloon-middle { left: 45%; bottom: 0; }
+
         .balloon img {
-            width: 80px; /* Resized */
-            height: 110px; /* Resized */
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             border-radius: 50%;
         }
 
-        .balloon-bottom {
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-200px); }
+            100% { transform: translateY(-600px); }
+        }
+
+        /* Countdown */
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
         }
 
         @keyframes rainbow {
@@ -109,62 +107,56 @@
             85% { color: #FF007F; }
             100% { color: #FF007F; }
         }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float-to-center {
-            0% { transform: translate(-50%, 50%); opacity: 0; }
-            20% { transform: translate(-50%, 80%); opacity: 1; }
-            100% { transform: translate(-50%, -50%); opacity: 1; }
-        }
     </style>
+    <script>
+        function updateCountdown() {
+            let now = new Date();
+            let midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+            
+            let timeDiff = midnight - now;
+            let hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+            let minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+            let seconds = Math.floor((timeDiff / 1000) % 60);
+            
+            document.getElementById("countdown").innerText = `Time until birthday: ${hours}h ${minutes}m ${seconds}s`;
+            
+            if (timeDiff <= 0) {
+                document.getElementById("birthday-music").play();
+                setTimeout(() => window.location.href = "birthday.html", 5000);
+            } else {
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+        
+        window.onload = updateCountdown;
+    </script>
 </head>
 <body>
-    <div class="content">
-        <!-- Title -->
-        <div class="title">
-            <span class="letter" style="color: #FF007F;">H</span>
-            <span class="letter" style="color: #FF9B00;">a</span>
-            <span class="letter" style="color: #FFEC00;">p</span>
-            <span class="letter" style="color: #00FF00;">p</span>
-            <span class="letter" style="color: #00E6FF;">y</span>
-            <span class="letter" style="color: #8000FF;"> </span>
-            <span class="letter" style="color: #FF007F;">B</span>
-            <span class="letter" style="color: #FF9B00;">i</span>
-            <span class="letter" style="color: #FFEC00;">r</span>
-            <span class="letter" style="color: #00FF00;">t</span>
-            <span class="letter" style="color: #00E6FF;">h</span>
-            <span class="letter" style="color: #8000FF;">d</span>
-            <span class="letter" style="color: #FF007F;">a</span>
-            <span class="letter" style="color: #FF9B00;">y</span>
-        </div>
-        <div class="title">
-            <span class="letter" style="color: #FF9B00;">s</span>
-            <span class="letter" style="color: #FFEC00;">a</span>
-            <span class="letter" style="color: #00FF00;">h</span>
-            <span class="letter" style="color: #00E6FF;">i</span>
-            <span class="letter" style="color: #8000FF;">t</span>
-            <span class="letter" style="color: #FF007F;">y</span>
-            <span class="letter" style="color: #FF9B00;">a</span>
-
-        </div>
-`
-        <!-- Cake Image -->
-        <img class="cake-image" src="https://www.greatestbakery.in/wp-content/uploads/2023/05/Rainbow-Cake.jpg" alt="Birthday Cake">
+    <div class="title">
+        <span class="letter">H</span>
+        <span class="letter">a</span>
+        <span class="letter">p</span>
+        <span class="letter">p</span>
+        <span class="letter">y</span>
+        <span class="letter"> </span>
+        <span class="letter">B</span>
+        <span class="letter">i</span>
+        <span class="letter">r</span>
+        <span class="letter">t</span>
+        <span class="letter">h</span>
+        <span class="letter">d</span>
+        <span class="letter">a</span>
+        <span class="letter">y</span>
     </div>
-
-    <!-- Fireworks -->
+    <div id="countdown"></div>
+    <audio id="birthday-music" src="birthday-song.mp3"></audio>
     <div class="firework firework1"></div>
     <div class="firework firework2"></div>
     <div class="firework firework3"></div>
     <div class="firework firework4"></div>
-
-    <!-- Balloon Animation -->
-    <div class="balloon balloon-bottom">
-        <img src="remote.jpg" alt="Balloon">
-    </div>
+    <div class="balloon balloon-left"><img src="haswi4.jpg" alt="Balloon Left"></div>
+    <div class="balloon balloon-right"><img src="haswi4.jpg" alt="Balloon Right"></div>
+    <div class="balloon balloon-middle"><img src="haswi4.jpg" alt="Balloon Middle"></div>
 </body>
 </html>
